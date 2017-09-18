@@ -16,13 +16,11 @@ import { HomeComponent } from './containers/home/home.component';
 import { UsersComponent } from './containers/users/users.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { CounterComponent } from './containers/counter/counter.component';
-import { ChatComponent } from './containers/chat/chat.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { NgxBootstrapComponent } from './containers/ngx-bootstrap-demo/ngx-bootstrap.component';
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
-import { ConnectionResolver } from './shared/route.resolver';
 import { ORIGIN_URL } from './shared/constants/baseurl.constants';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
 
@@ -43,7 +41,6 @@ export function createTranslateLoader(http: Http, baseHref) {
         UsersComponent,
         UserDetailComponent,
         HomeComponent,
-        ChatComponent,
         NotFoundComponent,
         NgxBootstrapComponent
     ],
@@ -111,19 +108,6 @@ export function createTranslateLoader(http: Http, baseHref) {
                 }
             },
             {
-                path: 'chat', component: ChatComponent,
-                // Wait until the resolve is finished before loading the Route
-                resolve: { connection: ConnectionResolver },
-                data: {
-                    title: 'SignalR chat example',
-                    meta: [{ name: 'description', content: 'This is an Chat page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/chat/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/chat' }
-                    ]
-                }
-            },
-            {
                 path: 'ngx-bootstrap', component: NgxBootstrapComponent,
                 data: {
                     title: 'Ngx-bootstrap demo!!',
@@ -158,7 +142,6 @@ export function createTranslateLoader(http: Http, baseHref) {
     providers: [
         LinkService,
         UserService,
-        ConnectionResolver,
         TranslateModule
     ]
 })

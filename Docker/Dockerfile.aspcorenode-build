@@ -1,0 +1,7 @@
+FROM microsoft/aspnetcore-build:latest
+
+RUN apt-get update
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash
+RUN apt-get install nodejs
+RUN node -v
+RUN npm -v
